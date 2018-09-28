@@ -1,0 +1,59 @@
+<!-- Task Info -->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="card">
+    <div class="header">
+      <h2>TASK INFORMATION</h2>
+      <ul class="header-dropdown m-r--5">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button"
+             aria-expanded="false"
+             aria-haspopup="true">
+            <i class="material-icons">more_vert</i>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li><a routerLink="/landing/createtask">Add New Task</a></li>
+            <li><a routerLink="/landing/reporttask">Give Task Report</a></li>
+            <li><a routerLink="/landing">Go to Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+      <div class="table-responsive">
+        <table class="table table-hover dashboard-task-infos">
+          <thead>
+          <tr>
+
+            <th>Task</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let tsk of task">
+            <td>{{tsk.objective}}</td>
+            <td>{{tsk.status}}</td>
+            <td>{{tsk.userid?.username}}</td>
+
+            <td>
+              <button type="button" (click)="editTask(tsk.taskid)" class="btn btn-sm btn-default waves-effect">
+                <i class="material-icons">mode_edit</i>
+              </button>
+            </td>
+            <td>
+              <button type="button" (click)="deleteTask(tsk.taskid)" class="btn btn-sm btn-default waves-effect">
+                <i class="material-icons">delete_forever</i>
+              </button>
+            </td>
+
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- #END# Task Info -->

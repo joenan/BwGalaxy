@@ -1,0 +1,70 @@
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="card">
+
+      <div class="header bg-light-blue">
+          <h2>TASK INFORMATION</h2>
+          <ul class="header-dropdown m-r--5">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button"
+                 aria-expanded="false"
+                 aria-haspopup="true">
+                <i class="material-icons">more_vert</i>
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li><a routerLink="/landing/createtask">Add New Task</a></li>
+                <li><a routerLink="/landing/reporttask">Give Task Report</a></li>
+                <li><a routerLink="/landing">Go to Dashboard</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+    <div class="body">
+      <div class="body">
+
+        <form #createTaskForm="ngForm">
+
+          <div class="form-group">
+
+            <div class="form-line">
+              <input class="form-control" type="text" placeholder="Task Objective" [(ngModel)]="retrievedModel.objective" name="objective" />
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary waves-effect">Add Objective</button> -->
+          </div>
+          <div class="form-group">
+
+            <div class="form-line">
+              <input class="form-control" type="text" placeholder="Task Description" [(ngModel)]="retrievedModel.description"
+                name="description">
+            </div>
+
+          </div>
+          <div class="form-group">
+
+            <div class="form-line">
+              <textarea name="description" placeholder="Detailed Description" cols="20" rows="5" class="form-control no-resize"
+                [(ngModel)]="retrievedModel.detaileddescription" name="detaileddescription" required>
+          </textarea>
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+            <div class="form-line">
+              <input class="form-control no-resize" type="date" placeholder="Please choose a Timeframe for the Task..."
+                [(ngModel)]="retrievedModel.duedate" name="model.duedate" (ngModelChange)="model.duedate = $event">
+            </div>
+          </div>
+
+
+          <button (click)="submitTask()" class="btn btn-primary waves-effect" type="button">Post Task</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

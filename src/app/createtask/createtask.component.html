@@ -1,0 +1,145 @@
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="card">
+    <div class="header bg-light-blue">
+      <h2>
+        Add New Task <small>New task here...</small>
+      </h2>
+    </div>
+    <div class="body">
+      <div class="body">
+
+        <form #createTaskForm="ngForm">
+
+          <div class="form-group">
+
+            <div class="form-line">
+              <input class="form-control" type="text" placeholder="Task Objective" [(ngModel)]="model.objective" name="objective" />
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary waves-effect">Add Objective</button> -->
+          </div>
+          <div class="form-group">
+
+            <div class="form-line">
+              <input class="form-control" type="text" placeholder="Task Description" [(ngModel)]="model.description"
+                name="description">
+            </div>
+
+          </div>
+          <div class="form-group">
+
+            <div class="form-line">
+              <textarea name="description" placeholder="Detailed Description" cols="20" rows="5" class="form-control no-resize"
+                [(ngModel)]="model.detaileddescription" name="detaileddescription" required>
+
+
+
+          </textarea>
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+            <div class="form-line">
+              <input class="form-control no-resize" type="date" placeholder="Please choose a Timeframe for the Task..."
+                [(ngModel)]="model.duedate" name="model.duedate" (ngModelChange)="model.duedate = $event">
+            </div>
+          </div>
+
+
+          <button (click)="submitTask()" class="btn btn-primary waves-effect" type="button">Post Task</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="card">
+    <div class="header bg-light-blue">
+      <h2>
+        Un-Assigned Task <small>Unassigned tax here...</small>
+      </h2>
+      <ul class="header-dropdown m-r--5">
+        <li>
+          <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="timer" data-loading-color="lightBlue">
+            <i class="material-icons">loop</i>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="material-icons">more_vert</i>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li><a routerLink="/landing/createtask">Add New Task</a></li>
+            <li><a routerLink="/landing/reporttask">Give Task Report</a></li>
+            <li><a routerLink="/landing">Go to Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="body">
+
+
+      <!-- Assign Task Area -->
+      <form #assignTaskForm="ngForm">
+        <div class="body">
+          <div class="col-sm-12">
+            <select id="optgroup" name="taskinfo" class="ms" multiple="multiple" style="width:100%; height:200px;"
+              [(ngModel)]="taskinfo">
+              <optgroup label="CLICK TO SELECT A TASK">
+                  <option *ngFor="let tsk of unassignedTask">{{tsk.objective}}</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="body">
+          <div class="col-sm-12">
+            <select id="optgroup" name="username" class="ms" multiple="multiple" style="width:100%; height:100px;"
+              [(ngModel)]="username">
+              <optgroup label="CLICK TO SELECT A USER">
+                  <option *ngFor="let us of users">{{us.username}}</option>
+              </optgroup>
+            </select>
+          </div>
+          <button type="button" (click)="assignButtonClicked()" class="btn btn-primary waves-effect">ASSIGN TASK</button>
+        </div>
+      </form>
+
+      <!-- End of Assign Task Area -->
+
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+          <thead>
+            <tr>
+              <th>Objective</th>
+              <th>Assigned User</th>
+              <th>Manager </th>
+              <th>Manager</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let tsk of unassignedTask">
+              <td>{{tsk.objective}}</td>
+              <td>{{tsk.userid?.username}}</td>
+              <td>{{tsk.managerid?.name}}</td>
+              <td>{{tsk.objective}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>

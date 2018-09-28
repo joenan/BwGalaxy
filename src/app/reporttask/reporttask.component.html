@@ -1,0 +1,88 @@
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="card">
+    <div class="header bg-light-blue">
+      <h2>
+        Task Report <small>Report your task here...</small>
+      </h2>
+    </div>
+    <div class="body">
+      <div class="body">
+
+        <form #reportTaskForm1="ngForm">
+
+          <div class="form-group">
+            <select id="optgroup" class="form-control" name="taskstatus" [(ngModel)]="taskstatus">
+              <option>Select Report Status</option>
+              <option *ngFor="let st of status">{{st}}</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+
+            <div class="form-line">
+              <input class="form-control" type="text" placeholder="Description of Selected Option" [(ngModel)]="description"
+                name="description" />
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary waves-effect">Add Objective</button> -->
+          </div>
+          <div class="form-group">
+
+            <div>
+              <button (click)="submitTaskReport()" class="btn btn-primary waves-effect" type="button">Submit Task
+                Report</button>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <div class="card">
+    <div class="header bg-light-blue">
+      <h2>
+        Ongoing Task<small>SELECT AN ONGOING TASK FOR REPORT HERE...</small>
+      </h2>
+      <ul class="header-dropdown m-r--5">
+        <li>
+          <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="timer" data-loading-color="lightBlue">
+            <i class="material-icons">loop</i>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="material-icons">more_vert</i>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li><a routerLink="/landing/createtask">Add New Task</a></li>
+            <li><a routerLink="/landing/reporttask">Give Task Report</a></li>
+            <li><a routerLink="/landing">Go to Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+    </div>
+    <form #reportTaskForm2="ngForm">
+      <div class="body">
+        <div class="col-sm-12">
+          <select id="optgroup" name="objective" class="ms" multiple="multiple" style="width:100%; height:200px;"
+            [(ngModel)]="objective">
+            <optgroup label="Ongoing Task List">
+              <option *ngFor="let us of allOngoingTask">{{us.objective}}</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="row clearfix"></div>
+      </div>
+    </form>
+
+  </div>
+</div>
